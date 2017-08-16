@@ -207,24 +207,24 @@
     {
       var x = ["A", "B"]; // do not touch this!
       var y = ["C", "D","E"]; // do not touch this!
-      var repeated = c; // use concat
+      var repeated = []; // use concat
       isEqual(["A","B","C","D","E"], repeated);
     };
 
     {
-      var x = ["A", "B", "C"]; // do not touch this! 
+      var c = ["A", "B", "C"]; // do not touch this! 
       var repeated = c; // use reverse
       isEqual(["C","B","A"], repeated);
     };
 
     {
-      var x = ["AC", "BD", "CB"]; // do not touch this! 
+      var c = ["AC", "BD", "CB"]; // do not touch this! 
       var repeated = c; // use filter function to fliter out texts which inlcude "C".
       isEqual(["AC","CB"], repeated);
     };
 
     {
-      var x = [1, 2, 3]; // do not touch this! 
+      var c = [1, 2, 3]; // do not touch this! 
       var repeated = c; // use map function to double the numbers
       isEqual([2,4,6], repeated);
     };
