@@ -134,13 +134,77 @@
         
       isEqual([2,4,6].join(), a.join());
     };
+ 
+    {
+      var c = [0,1,2,3,4,5,6]; // do not touch this!
+      var a = []; // get even numbers
+      isEqual([0,2,4,6].join(), a.join());
+    };
 
+    {
+      var c = [10,21,82,23,64,15,6]; // do not touch this!
+      var max = 34; // get maximum number
+      isEqual(82, max);
+    };
 
+    {
+      var c = [10,21,10,23,64,21,6]; // do not touch this!
+      var repeated = [5,9]; // find repeating numbers
+      isEqual([10,21], repeated);
+    };
 
+    {
+      var c = [10, 22, 2, 34, 15, 3]; // do not touch this!
+      var repeated = [10, 22, 2, 34, 15, 3]; // use sort function of arrays
+      isEqual([2,3,10,15,22,34].join(), repeated);
+    };
 
+    {
+      var c = [10, 22, 2, 34, 15, 3]; // do not touch this!
+      var repeated = [10, 22, 2, 34, 15, 3]; // find number 2 and remove it from array 
+                                             // (functions to be used: indexOf ,split )
+      isEqual([10, 22, 34, 15, 3], repeated);
+    };
 
+    {
+      var c = "this is an example of this where this we value a lot"; // do not touch this!
+      var repeated = 4; // how many times the word "this" is used (functions: split, ...)
+                                             
+      isEqual(3, repeated);
+    };
 
+    {
+      var c = [10]; // do not touch this!
+      var repeated = c; // use push function
+      isEqual([10,11,12][2], repeated);
+    };
 
+    {
+      var c = [10, 11, 12]; // do not touch this!
+      var repeated = c; // use shift function
+      isEqual([11,12], repeated);
+    };
+
+    {
+      var c = [10, 11, 12]; // do not touch this!
+      var repeated = c; // use unshift function
+      isEqual([9, 10, 11,12], repeated);
+    };
+
+    {
+      var x = ["A", "B"]; // do not touch this!
+      var y = ["C", "D","E"]; // do not touch this!
+      var repeated = c; // use concat
+      isEqual(["A","B","C","D","E"], repeated);
+    };
+
+    {
+      var x = ["A", "B", "C"]; // do not touch this! 
+      var repeated = c; // use reverse
+      isEqual(["C","B","A"], repeated);
+    };
+
+ 
 
 
 
