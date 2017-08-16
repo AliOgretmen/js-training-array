@@ -169,7 +169,7 @@
     {
       var c = [10, 22, 2, 34, 15, 3]; // do not touch this!
       var repeated = [10, 22, 2, 34, 15, 3]; // use sort function of arrays
-      isEqual([2,3,10,15,22,34].join(), repeated);
+      isEqual([2,3,10,15,22,34], repeated);
     };
 
     {
