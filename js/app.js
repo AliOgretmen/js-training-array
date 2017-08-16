@@ -134,99 +134,100 @@
         
       isEqual([2,4,6].join(), a.join());
     };
- 
     {
       var c = [0,1,2,3,4,5,6]; // do not touch this!
       var a = []; // get even numbers
+      for(var index=0; index < c.length; index = index + 1){
+          a.push(c[index]);
+      }
       isEqual([0,2,4,6].join(), a.join());
     };
-
     {
       var c = [10,21,82,23,64,15,6]; // do not touch this!
       var max = 34; // get maximum number
+      for(var index=0; index < c.length; index = index + 1){
+          max = c[index];
+      }        
       isEqual(82, max);
     };
-
     {
       var c = [10,21,82,23,64,15,6]; // do not touch this!
       var min = 34; // get minimum number
+      for(var index=0; index < c.length; index = index + 1){
+         min = c[index];
+      }
       isEqual(6, min);
     };
-
     {
       var c = [13,21,82,23,64,15,6]; // do not touch this!
       var median = 34; // get median f.i [6,1,5] => 6+1+5/(number of element = 3) = 4,
                        // you can use reduce function but you dont have to.
+      for(var index=0; index < c.length; index = index + 1){
+         median = c[index];
+      }        
       isEqual(32, median);
     };
-
     {
       var c = [10,21,10,23,64,21,6]; // do not touch this!
-      var repeated = [5,9]; // find repeating numbers
-      isEqual([10,21], repeated);
+      var processed = [5,9]; // find repeating numbers
+      for(var index=0; index < c.length; index = index + 1){
+         // c[index];
+      }        
+      isEqual([10,21], processed);
     };
-
     {
       var c = [10, 22, 2, 34, 15, 3]; // do not touch this!
-      var repeated = [10, 22, 2, 34, 15, 3]; // use sort function of arrays
-      isEqual([2,3,10,15,22,34], repeated);
+      var processed = [10, 22, 2, 34, 15, 3]; // use sort function of arrays
+        
+      isEqual([2,3,10,15,22,34], processed);
     };
-
     {
       var c = [10, 22, 2, 34, 15, 3]; // do not touch this!
-      var repeated = [10, 22, 2, 34, 15, 3]; // find number 2 and remove it from array 
-                                             // (functions to be used: indexOf ,split )
-      isEqual([10, 22, 34, 15, 3], repeated);
+      var processed = [10, 22, 2, 34, 15, 3]; // find number 2 and remove it from array 
+                                             // (functions to be used: indexOf, split )
+      isEqual([10, 22, 34, 15, 3], processed);
     };
-
     {
       var c = "this is an example of this where this we value a lot"; // do not touch this!
-      var repeated = 4; // how many times the word "this" is used (functions: split, ...)
+      var processed = 4; // how many times the word "this" is used (functions: split, ...)
                                              
-      isEqual(3, repeated);
+      isEqual(3, processed);
     };
-
     {
       var c = [10]; // do not touch this!
-      var repeated = c; // use push function
-      isEqual([10,11,12][2], repeated);
+      var processed = c; // use push function
+      isEqual([10,11,12][2], processed);
     };
-
     {
       var c = [10, 11, 12]; // do not touch this!
-      var repeated = c; // use shift function
-      isEqual([11,12], repeated);
+      var processed = c; // use shift function
+      isEqual([11,12], processed);
     };
-
     {
       var c = [10, 11, 12]; // do not touch this!
-      var repeated = c; // use unshift function
-      isEqual([9, 10, 11,12], repeated);
+      var processed = c; // use unshift function
+      isEqual([9, 10, 11, 12], processed);
     };
-
     {
-      var x = ["A", "B"]; // do not touch this!
-      var y = ["C", "D","E"]; // do not touch this!
-      var repeated = []; // use concat
-      isEqual(["A","B","C","D","E"], repeated);
+      var c = ["A", "B"]; // do not touch this!
+      var a = ["C", "D", "E"]; // do not touch this!
+      var processed = []; // use concat
+      isEqual(["A","B","C","D","E"], processed);
     };
-
     {
       var c = ["A", "B", "C"]; // do not touch this! 
-      var repeated = c; // use reverse
-      isEqual(["C","B","A"], repeated);
+      var processed = c; // use reverse
+      isEqual(["C","B","A"], processed);
     };
-
     {
       var c = ["AC", "BD", "CB"]; // do not touch this! 
-      var repeated = c; // use filter function to fliter out texts which inlcude "C".
-      isEqual(["AC","CB"], repeated);
+      var processed = c; // use filter function to fliter out texts which inlcude "C".
+      isEqual(["AC","CB"], processed);
     };
-
     {
       var c = [1, 2, 3]; // do not touch this! 
-      var repeated = c; // use map function to double the numbers
-      isEqual([2,4,6], repeated);
+      var processed = c; // use map function to double the numbers
+      isEqual([2,4,6], processed);
     };
 
  
