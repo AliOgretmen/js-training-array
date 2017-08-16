@@ -148,6 +148,19 @@
     };
 
     {
+      var c = [10,21,82,23,64,15,6]; // do not touch this!
+      var min = 34; // get minimum number
+      isEqual(6, min);
+    };
+
+    {
+      var c = [13,21,82,23,64,15,6]; // do not touch this!
+      var median = 34; // get median f.i [6,1,5] => 6+1+5/(number of element = 3) = 4,
+                       // you can use reduce function but you dont have to.
+      isEqual(32, median);
+    };
+
+    {
       var c = [10,21,10,23,64,21,6]; // do not touch this!
       var repeated = [5,9]; // find repeating numbers
       isEqual([10,21], repeated);
@@ -202,6 +215,18 @@
       var x = ["A", "B", "C"]; // do not touch this! 
       var repeated = c; // use reverse
       isEqual(["C","B","A"], repeated);
+    };
+
+    {
+      var x = ["AC", "BD", "CB"]; // do not touch this! 
+      var repeated = c; // use filter function to fliter out texts which inlcude "C".
+      isEqual(["AC","CB"], repeated);
+    };
+
+    {
+      var x = [1, 2, 3]; // do not touch this! 
+      var repeated = c; // use map function to double the numbers
+      isEqual([2,4,6], repeated);
     };
 
  
