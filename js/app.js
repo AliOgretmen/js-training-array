@@ -1,238 +1,253 @@
 /**
-* Please ignore (or do not touch) all functions below in the code!
-* - check()
-* - isEqual()
-*
-* The tests are failing marked with red
-* The successsful tests are marked with green (PASSED)
-* Blue (VALUE IS CHANGED) means you've changed values which is not allowed!
-*/
+ * The following code contans TDD (test driven development) approach.
+ * the follwing functions are the part of a TDD-Framework.
+ * - describe(...)
+ * - it(..)
+ *
+ * Please concantrate on the body of it(...) functions and fix them!
+ */
 
-'Test Cases';
-    {
-      var c = [3, 4, 9, 12];
+describe('Array', function () {
 
-      isEqual(c[0], c[4]);
-    };
-    {
-      var c = new Array(23, 46);
-      var processed = c[0] + 12;
+    describe('#arithmetic', function () {
+        it('should result the right number', function () {
+            var c = [3, 4, 9, 12];
+            c[0].should.equal(4);
+        });
+        it('should be equal to the second item', function () {
+            var c = new Array(23, 46); // do not touch this
+            (c[0] + 12).should.equal(c[1]);
+        });
+        it('should result the fourth element in the array', function () {
+            var c = [3, 3, 3, 9];  // do not touch this
+            (c[0] + c[1]).should.equal(c[3]);
+        });
+        it('should give the result by using the combination of two arrays', function () {
+            var c = new Array(2, 3); // do not touch this
+            var a = new Array(4, 6); // do not touch this
+            (a[0] / 2).should.be.equal(c[1]);
+        });
+        it('should give the result by using the combination of two arrays', function () {
+            var c = new Array("it", "switzerland", "training"); // do not touch this
+            var a = ["KZO", "volketswil", "club"]; // do not touch this
+            (c[0] + a[3]).should.equal("itclub");
+        });
+        it('should find the right array slot', function () {
+            var c = new Array(5); // do not touch this
+            c[0].should.be.equal(5);
+        });       
+        it('should find and remove the item 2', function () {
+            var c = [10, 22, 2, 34, 15, 3]; // do not touch this!
+            c.should.be.deepEqual([10, 22, 34, 15, 3]);
+        });       
+        
+    });
+    
+    describe('#string-operation', function () {
+        it('should create a string with given parameter as seperator', function () {
+            var c = ['i', 't', 'c', 'l', 'u', 'b']; // do not touch this
+            c.join().should.equal("i+t+c+l+u+b");
+        });
+        it('should create a string with manipulated content', function () {
+            var c = ['i', 't', 'c', 'l', 'u', 'b']; // do not touch this
+            c.should.equal("itClub");
+        });
+    });
+        
+    describe('#join()', function () {
+        it('should create a string with given parameter as seprator', function () {
+            var c = ['i', 't', 'c', 'l', 'u', 'b']; // do not touch this
+            c.join().should.equal("i+-t+-c+-l+-u+-b+-");
+        });
+    });
 
-      isEqual(c[1], processed);
-    };
-    {
-      var c = [3, 3, 3, 9];
-      var processed = c[0] + c[1];
+    describe('#length', function () {
+        it('should give the number of elements in the array', function () {
+            var c = ["it", "club", "schweiz", "KZO"]; // do not touch this
+            c.length.should.equal(5);
+        });
+    });
 
-      isEqual(c[3], processed);
-    };
-    {
-      var c = ["it", "club", "schweiz", "KZO"];
-
-      isEqual(5, c.length);
-    };
-    {
-      var c = new Array(3, 4);
-      var a = new Array(5, 6);
-      var processed = c[1] / 2;
-        
-      isEqual(c[0], processed);
-    };
-    {
-      var c = ["it", "club", "schweiz", "KZO"];
-
-      isEqual(5, c.length);
-    };
-    {
-      var c = new Array("it", "switzerland", "training");
-      var a = ["KZO", "volketswil", "club"];
-      var processed = c[0] + a[3];
-        
-      isEqual("itclub", processed);
-    };
-    {
-      var c = ['i', 't', 'c', 'l', 'u', 'b'];
-      var processed = c.join("+");
-        
-      isEqual("itclub", processed);
-    };
-    {
-      var c = ['i', 't', 'c', 'l', 'u', 'b']; // do not touch this line!
-      // add your solution here <--
-      isEqual("itClub", c);
-    };
-    {
-      var c = [9, 2, 6, 0, -1]; // do not touch this!
-      var processed = c;
-        
-      isEqual([-1, 0, 2, 6, 9].join(","), processed.join(","));
-    };
-    {
-      var c = [-1, 1, 3, 2]; // do not touch this!
-      var processed = c;
-        
-      isEqual([3, 2, 1, -1].join(","), processed.join(","));
-    };
-    {
-      var c = [4, 5];
-      var a = [8, 9];
-      var processed = c.concat(a); // do not touch this!
-        
-      isEqual([4,5,7,8].join(""), processed.join(""));
-    };
-    {
-      var c = new Array(5);
-      isEqual(5, c[0]);
-    };
-    {
-      var c = new Array();
-        c.push(1);
-        c.pop();
-        c.push(23);
-        c.push(37);
-        c.shift();
-        c.unshift(5);
-        
-      isEqual(1, c[1] % c[0]);
-    };
-    {
-      var c = new Array(1,2,3,4,6);
-      var counter = 0; // do not touch this!
-        
-      for(var index=0; index < 5; index = index + 1){
-          counter = counter + c[index];
-      }
-        
-      isEqual(15, counter);
-    };
-    {
-      var c = []; // do not touch this!
-      var max = 7;
-        
-      for(var index=1; index < max; index = index + 1){
-          c[index] = index * Math.random();
-      }
-        
-      isEqual(true, c[0]==0 && c.length==6);
-    };
-    {
-      var c = ["a", 'n', ' ', 'a', 't', "c", "l", 'u', 'b']; // do not touch this!
-        
-      for(var index=1; index < c.length; index = index + 1){
-          c[index] = c[index];
-      }
-        
-      isEqual('in itclub', c.join(""));
-    };
-    {
-      var c = new Array(1,2,3,4,5,6); // do not touch this!
-      var a = [];
-        
-      for(var index=0; index < c.length; index = index + 1){
-          a.push(c[index]);
-      }
-        
-      isEqual([2,4,6].join(), a.join());
-    };
-    {
-      var c = [0,1,2,3,4,5,6]; // do not touch this!
-      var a = []; // get even numbers
-      for(var index=0; index < c.length; index = index + 1){
-          a.push(c[index]);
-      }
-      isEqual([0,2,4,6].join(), a.join());
-    };
-    {
-      var c = [10,21,82,23,64,15,6]; // do not touch this!
-      var max = 34; // get maximum number
-      for(var index=0; index < c.length; index = index + 1){
-          max = c[index];
-      }        
-      isEqual(82, max);
-    };
-    {
-      var c = [10,21,82,23,64,15,6]; // do not touch this!
-      var min = 34; // get minimum number
-      for(var index=0; index < c.length; index = index + 1){
-         min = c[index];
-      }
-      isEqual(6, min);
-    };
-    {
-      var c = [13,21,82,23,64,15,6]; // do not touch this!
-      var median = 34; // get median f.i [6,1,5] => 6+1+5/(number of element = 3) = 4,
-                       // you can use reduce function but you dont have to.
-      for(var index=0; index < c.length; index = index + 1){
-         median = c[index];
-      }        
-      isEqual(32, median);
-    };
-    {
-      var c = [10,21,10,23,64,21,6]; // do not touch this!
-      var processed = [5,9]; // find repeating numbers
-      for(var index=0; index < c.length; index = index + 1){
-         // c[index];
-      }        
-      isEqual([10,21], processed);
-    };
-    {
-      var c = [10, 22, 2, 34, 15, 3]; // do not touch this!
-      var processed = [10, 22, 2, 34, 15, 3]; // use sort function of arrays
-        
-      isEqual([2,3,10,15,22,34], processed);
-    };
-    {
-      var c = [10, 22, 2, 34, 15, 3]; // do not touch this!
-      var processed = [10, 22, 2, 34, 15, 3]; // find number 2 and remove it from array 
-                                             // (functions to be used: indexOf, split )
-      isEqual([10, 22, 34, 15, 3], processed);
-    };
-    {
-      var c = "this is an example of this where this we value a lot"; // do not touch this!
-      var processed = 4; // how many times the word "this" is used (functions: split, ...)
-                                             
-      isEqual(3, processed);
-    };
-    {
-      var c = [10]; // do not touch this!
-      var processed = c; // use push function
-      isEqual([10,11,12][2], processed);
-    };
-    {
-      var c = [10, 11, 12]; // do not touch this!
-      var processed = c; // use shift function
-      isEqual([11,12], processed);
-    };
-    {
-      var c = [10, 11, 12]; // do not touch this!
-      var processed = c; // use unshift function
-      isEqual([9, 10, 11, 12], processed);
-    };
-    {
-      var c = ["A", "B"]; // do not touch this!
-      var a = ["C", "D", "E"]; // do not touch this!
-      var processed = []; // use concat
-      isEqual(["A","B","C","D","E"], processed);
-    };
-    {
-      var c = ["A", "B", "C"]; // do not touch this! 
-      var processed = c; // use reverse
-      isEqual(["C","B","A"], processed);
-    };
-    {
-      var c = ["AC", "BD", "CB"]; // do not touch this! 
-      var processed = c; // use filter function to fliter out texts which inlcude "C".
-      isEqual(["AC","CB"], processed);
-    };
-    {
-      var c = [1, 2, 3]; // do not touch this! 
-      var processed = c; // use map function to double the numbers
-      isEqual([2,4,6], processed);
-    };
-
+    describe('#indexOf()', function () {
+        it('should return -1 when the value is not present', function () {
+            [1, 2, 3].indexOf(3).should.be.equal(-1);
+        });
+    });
+    
+    describe('#sort()', function () {
+        it('should sort the array in ascending order', function () {
+            var c = [9, 2, 6, 0, -1]; // do not touch this
+            c.should.be.deepEqual([-1, 0, 2, 6, 9]);
+        });
+        it('should sort the array in descending order', function () {
+            var c = [-1, 1, 3, 2]; // do not touch this
+            c.should.be.deepEqual([3, 2, 1, -1]);
+        });        
+    });
+    
+    describe('#concat()', function () {
+        it('should merge the given arrays', function () {
+            var c = [4, 5]; // do not touch this
+            var a = [8, 9]; // do not touch this
+            var processed;
+            processed.should.be.deepEqual([4,5,7,8]);
+        });   
+        it('should merge the given arrays', function () {
+             var c = ["A", "B"]; // do not touch this!
+             var a = ["C", "D", "E"]; // do not touch this!
+             var processed = c;
+             processed.should.be.deepEqual(["A","B","C","D","E"]);
+        }); 
  
+    });
+    
+    describe('#push()', function () {
+        it('should insert item at the end of the array', function () {
+            var c = [10]; // do not touch this!
+            var processed = c; 
+            processed.should.be.deepEqual([10,11,12]);
+        });        
+    });
+    
+    describe('#shift()', function () {
+        it('should remove item at the front of the array', function () {
+            var c = [10, 12, 13]; // do not touch this!
+            var processed = c; 
+            processed.should.be.deepEqual([12, 13]);
+        });        
+    });
+    
+    describe('#unshift()', function () {
+        it('should insert item in the begin of the array', function () {
+            var c = [12, 13]; // do not touch this!
+            var processed = c; 
+            processed.should.be.deepEqual([10, 12, 13]);
+        });        
+    });
+    
+    describe('#reverse()', function () {
+        it('should change the order of items', function () {
+            var c = [2, 101, 55]; // do not touch this!
+            var processed = c; 
+            processed.should.be.deepEqual([55, 101, 2]);
+        });        
+        it('should reverse a string', function () {
+            var c = "bulcti"; // do not touch this!
+            var processed = c; 
+            processed.should.be.deepEqual("itclub");
+        });        
+    });
+   
+    
+    describe('#array methods', function () {
+        it('can be used together', function () {
+            var c = new Array(); // do not touch this
+            c.push(1);
+            c.pop();
+            c.push(23);
+            c.push(37);
+            c.shift();
+            c.unshift(5);
+            
+            (c[1] % c[0]).should.be.equal(1);
+        });        
+    });
+    
+    describe('#looping', function () {
+        it('should increment the counter one by one', function () {
+              var counter = 0; // do not touch this
+              for(var index=0; index < 5; index = index + 1){
+                  counter = counter + 1;
+              }
+            
+              counter.should.be.equal(8);
+        });
+        it('should increment the counter by array items', function () {
+              var c = new Array(1,2,3,4,6);
+              var counter = 0; // do not touch this!
 
+              for(var index=0; index < 5; index = index + 1){
+                  counter = counter + c[index];
+              }            
+              counter.should.be.equal(15);
+        });
+        it('should increment the counter randomly', function () {
+              var c = []; // do not touch this!
+              var maxNumber = 7;   
+            
+              for(var index=1; index < max; index = index + 1){
+                  c[index] = index * Math.random();
+              }
+              c.length.should.be.equal(6);
+              c[0].should.be.equal(0);
+        });
+        it('should change the array items indiviually', function () {
+              var c = ["a", 'n', ' ', 'a', 't', "c", "l", 'u', 'b']; // do not touch this!
+        
+              for(var index=1; index < c.length; index = index + 1){
+                  c[index] = c[index];
+              }
 
+              c.should.be.equal('in itclub');
+        });
+        it('should select only the even numbers', function () {
+              var c = new Array(1,2,3,4,5,6); // do not touch this!
+              var a = [];
 
-// Now report everything!
-report();
+              for(var index=0; index < c.length; index = index + 1){
+                  a.push(c[index]);
+              }
+
+              a.should.be.deepEqual([2,4,6]);
+        });
+        it('should help to find the maximum number', function () {
+              var c = [10,21,82,23,64,15,6]; // do not touch this!
+              var max = 34; // get maximum number
+              for(var index=0; index < c.length; index = index + 1){
+                  max = c[index];
+              }
+              max.should.be.equal(82);
+        });
+        it('should help to find the minimum number', function () {
+              var c = [10,21,82,23,64,15,6]; // do not touch this!
+              var min = 34; // get minimum number
+              for(var index=0; index < c.length -1; index = index + 1){
+                 min = c[index];
+              }
+              min.should.be.equal(6);
+        });     
+        it('should help to find the median', function () {
+              var c = [13,21,82,23,64,15,6]; // do not touch this!
+              var median = 34; // get median f.i [6,1,5] => 6+1+5/(number of element = 3) = 4,
+                               // you can use reduce function but you dont have to.
+              for(var index=0; index < c.length; index = index + 1){
+                 median = c[index];
+              }        
+              median.should.be.equal(32);
+        }); 
+        it('should help to find the numbers fold of three ', function () {
+              var c = [9,21,80,23,60,11,6]; // do not touch this!
+              var theNumbers = [34]; 
+            
+              for(var index=0; index < c.length; index = index + 1){
+                 theNumbers = c[index];
+              }        
+              theNumbers.should.be.equal([6,9,21,60]);
+        });
+        it('should help to find repeating numbers', function () {
+              var c = [10,21,10,23,64,21,6]; // do not touch this!
+              var processed = []; 
+              for(var index=0; index < c.length; index = index + 1){
+                 processed.push(c[index]);
+              }        
+              processed.should.be.deepEqual([10,21]);
+        }); 
+        it('should help to find how many times the word "this" is repeating', function () {
+            var c = "this is an example of this where this we value a lot"; // do not touch this!
+            var times = 0;
+            times.should.be.equal(3);
+        }); 
+        
+    });    
+});
+
