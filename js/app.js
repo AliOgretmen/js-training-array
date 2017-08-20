@@ -122,7 +122,12 @@ describe('Array', function () {
             var c = [12, 13]; // do not touch this!
             var processed = c; 
             processed.should.be.deepEqual([10, 12, 13]);
-        });        
+        });  
+        it('should insert item as the first item in the array', function () {
+            var c = [12, 13]; // do not touch this!
+            var processed = c; // manuîpulate only this line
+            processed.should.be.deepEqual([1, 10, 13, 12, 13]);
+        });          
     });
     
     describe('#reverse()', function () {
@@ -150,7 +155,18 @@ describe('Array', function () {
             c.unshift(5);
             
             (c[1] % c[0]).should.be.equal(1);
-        });        
+        });     
+        it('should give number of people rest in the queue', function () {
+            var c = []; // do not touch this
+            c.push('ferdi');
+            c.push('cihad');
+            c.push('cemil');
+            c.pop();
+            c.reverse();
+            c.shift();
+            
+            c.should.be.deepEqual(['mehmet', 'ferdi']);
+        });
     });
     
     describe('#looping', function () {
@@ -225,14 +241,41 @@ describe('Array', function () {
               }        
               median.should.be.equal(32);
         }); 
-        it('should help to find the numbers fold of three ', function () {
+        it('should help to find the numbers factor of three ', function () {
               var c = [9,21,80,23,60,11,6]; // do not touch this!
-              var theNumbers = [34]; 
+              var theNumbers = []; 
+            
+              for(var index=0; index < c.length; index = index + 1){
+                 theNumbers.push(c[index]);
+              }        
+              theNumbers.should.be.deepEqual([6,9,21,60]);
+        });
+        it('should help to find the numbers which can be divided by 2 or 3', function () {
+              var c = [9,21,80,23,60,11,6,4]; // do not touch this!
+              var theNumbers = []; 
             
               for(var index=0; index < c.length; index = index + 1){
                  theNumbers = c[index];
               }        
-              theNumbers.should.be.equal([6,9,21,60]);
+              theNumbers.should.be.deepEqual([4,6,9,21,60,80]);
+        });
+        it('should help to find the numbers which can be divided by both 2 and 3', function () {
+              var c = [9,21,80,23,60,11,6,4]; // do not touch this!
+              var theNumbers = []; 
+            
+              for(var index=0; index < c.length; index = index + 1){
+                 theNumbers = c[index];
+              }        
+              theNumbers.should.be.deepEqual([6, 60]);
+        });
+        it('should help to find the strings whic containing the word "el"', function () {
+              var c = ['elveda','selami','hadi','itclub','kel','heyelan','oooo!','saral', 'peri', 'deli']; // do not touch this!
+              var theNumbers = []; 
+            
+              for(var index=0; index < 3; index = index + 1){
+                 theNumbers = c[index];
+              }        
+              theNumbers.should.be.deepEqual(['elveda','selami','kel','heyelan','deli']);
         });
         it('should help to find repeating numbers', function () {
               var c = [10,21,10,23,64,21,6]; // do not touch this!
@@ -242,12 +285,89 @@ describe('Array', function () {
               }        
               processed.should.be.deepEqual([10,21]);
         }); 
-        it('should help to find how many times the word "this" is repeating', function () {
-            var c = "this is an example of this where this we value a lot"; // do not touch this!
-            var times = 0;
-            times.should.be.equal(3);
+        it('should find the numbers less then 100', function () {
+              var c = [10,83,100,1000]; // do not touch this!
+              var processed = []; 
+              var index=0;
+              while(index < c.length){
+                 index = index + 1;  
+                 processed.push(c[index]);
+              }        
+              processed.should.be.deepEqual([10,83,100]);
         }); 
-        
+    });  
+    
+    
+    describe('#conditionals', function () {
+        it('should choose one one value', function () {
+            var c = true; // do not touch this
+            var processed=1;
+            if(c){
+                processed = 2;
+            }
+            
+            processed.should.be.equal(1);
+        });     
+        it('should evaluate the condition to a boolean', function () {
+            var c = Number.isNaN('NaN'); // do not touch this
+            var processed=0;
+            if(c){
+                processed = 2;
+            }else{
+                processed = 1;
+            }
+            
+            processed.should.be.equal(0);
+        });
+        it('should evaluate the condition with else-if to a boolean', function () {
+            var c = 'mesut'; // do not touch this
+            var processed=null;
+            
+            if(c === 'ferdi'){
+                processed = 'progress';
+            }else if(c === 'mesut'){
+                processed = 'take easy';
+            }else{
+                processed = 'go forward';
+            }
+            
+            processed.should.be.equal('take it easy');
+        });
+        it('should evaluate the ternary operator to a value', function () {
+            var c = 'iskender'; // do not touch this
+            var processed= c === 'iskender' ? "AC KALDIK YINE" : 'ENFESSS';
+            
+            processed.should.be.equal('ENFESS');
+        });
+        it('should evaluate the nested ternary operator to a value', function () {
+            var c = 'mezut'; // do not touch this
+            var processed= c === 'mesut'
+                           ? 'adana' : c === 'ferdi'
+                           ? 'giresun' : c === 'mustafa'
+                           ? 'antalya' : 'gurbet'
+            
+            processed.should.be.equal('adana');
+        });
+        it('should evaluate switch case ', function () {
+            var city = 'adana'; 
+            var country = null;
+            
+            switch(city){
+                case 'adana':
+                case 'istanbul':
+                    country = 'NK';
+                    break;
+                case 'newyork':
+                    country = 'US';
+                    break;
+                case 'zurich':
+                case 'st.gallen':
+                case 'luzern':    
+                    country = 'CH'
+            }
+            
+            country.should.be.equal('CH');
+        });        
     });    
 });
 
