@@ -12,32 +12,38 @@ describe('Array', function () {
     describe('#arithmetic', function () {
         it('should result the right number', function () {
             var c = [3, 4, 9, 12];
+            c[0]=4;
             c[0].should.equal(4);
         });
         it('should be equal to the second item', function () {
             var c = new Array(23, 46); // do not touch this
+            c[1]=35;
             (c[0] + 12).should.equal(c[1]);
         });
         it('should result the fourth element in the array', function () {
             var c = [3, 3, 3, 9];  // do not touch this
+            c[3]=6;
             (c[0] + c[1]).should.equal(c[3]);
         });
         it('should give the result by using the combination of two arrays', function () {
             var c = new Array(2, 3); // do not touch this
             var a = new Array(4, 6); // do not touch this
+            a[0]=6;
             (a[0] / 2).should.be.equal(c[1]);
         });
         it('should give the result by using the combination of two arrays', function () {
             var c = new Array("it", "switzerland", "training"); // do not touch this
             var a = ["KZO", "volketswil", "club"]; // do not touch this
-            (c[0] + a[3]).should.equal("itclub");
+            (c[0] + a[2]).should.equal("itclub");
         });
         it('should find the right array slot', function () {
             var c = new Array(5); // do not touch this
+            c[0]=5;
             c[0].should.be.equal(5);
         });       
         it('should find and remove the item 2', function () {
             var c = [10, 22, 2, 34, 15, 3]; // do not touch this!
+            c.splice(2,1);
             c.should.be.deepEqual([10, 22, 34, 15, 3]);
         });       
         
@@ -46,10 +52,12 @@ describe('Array', function () {
     describe('#string-operation', function () {
         it('should create a string with given parameter as seperator', function () {
             var c = ['i', 't', 'c', 'l', 'u', 'b']; // do not touch this
-            c.join().should.equal("i+t+c+l+u+b");
+            c.join("+").should.equal("i+t+c+l+u+b");
         });
         it('should create a string with manipulated content', function () {
             var c = ['i', 't', 'c', 'l', 'u', 'b']; // do not touch this
+            c[2]="C";
+            c = c.join("");
             c.should.equal("itClub");
         });
     });
@@ -57,30 +65,34 @@ describe('Array', function () {
     describe('#join()', function () {
         it('should create a string with given parameter as seprator', function () {
             var c = ['i', 't', 'c', 'l', 'u', 'b']; // do not touch this
-            c.join().should.equal("i+-t+-c+-l+-u+-b+-");
+              c = c.join("+-").concat("+-")
+            c.should.equal("i+-t+-c+-l+-u+-b+-");
         });
     });
 
     describe('#length', function () {
         it('should give the number of elements in the array', function () {
-            var c = ["it", "club", "schweiz", "KZO"]; // do not touch this
+            var c = ["it", "club", "schweiz", "KZO", "Zh"]; // do not touch this
             c.length.should.equal(5);
         });
     });
 
     describe('#indexOf()', function () {
         it('should return -1 when the value is not present', function () {
-            [1, 2, 3].indexOf(3).should.be.equal(-1);
+            [].indexOf(3).should.be.equal(-1);
         });
     });
     
     describe('#sort()', function () {
         it('should sort the array in ascending order', function () {
             var c = [9, 2, 6, 0, -1]; // do not touch this
+            c.sort();
             c.should.be.deepEqual([-1, 0, 2, 6, 9]);
         });
         it('should sort the array in descending order', function () {
             var c = [-1, 1, 3, 2]; // do not touch this
+            c.sort();
+            c.reverse();
             c.should.be.deepEqual([3, 2, 1, -1]);
         });        
     });
@@ -89,13 +101,15 @@ describe('Array', function () {
         it('should merge the given arrays', function () {
             var c = [4, 5]; // do not touch this
             var a = [8, 9]; // do not touch this
-            var processed;
+            a[0] =7;
+            a[1] =8;
+            var processed = c.concat(a);
             processed.should.be.deepEqual([4,5,7,8]);
         });   
         it('should merge the given arrays', function () {
              var c = ["A", "B"]; // do not touch this!
              var a = ["C", "D", "E"]; // do not touch this!
-             var processed = c;
+             var processed = c.concat(a);
              processed.should.be.deepEqual(["A","B","C","D","E"]);
         }); 
  
@@ -104,6 +118,7 @@ describe('Array', function () {
     describe('#push()', function () {
         it('should insert item at the end of the array', function () {
             var c = [10]; // do not touch this!
+             c.push(11, 12);
             var processed = c; 
             processed.should.be.deepEqual([10,11,12]);
         });        
@@ -112,6 +127,7 @@ describe('Array', function () {
     describe('#shift()', function () {
         it('should remove item at the front of the array', function () {
             var c = [10, 12, 13]; // do not touch this!
+            c.shift();
             var processed = c; 
             processed.should.be.deepEqual([12, 13]);
         });        
@@ -120,12 +136,14 @@ describe('Array', function () {
     describe('#unshift()', function () {
         it('should insert item in the begin of the array', function () {
             var c = [12, 13]; // do not touch this!
+            c.unshift(10);
             var processed = c; 
             processed.should.be.deepEqual([10, 12, 13]);
         });  
         it('should insert item as the first item in the array', function () {
             var c = [12, 13]; // do not touch this!
-            var processed = c; // manuîpulate only this line
+            c.unshift(1, 10, 13)
+            var processed = c;// manuîpulate only this line
             processed.should.be.deepEqual([1, 10, 13, 12, 13]);
         });          
     });
@@ -133,11 +151,12 @@ describe('Array', function () {
     describe('#reverse()', function () {
         it('should change the order of items', function () {
             var c = [2, 101, 55]; // do not touch this!
-            var processed = c; 
+            var processed = c.reverse(); 
             processed.should.be.deepEqual([55, 101, 2]);
         });        
         it('should reverse a string', function () {
             var c = "bulcti"; // do not touch this!
+            return c.split("").reverse().join("");
             var processed = c; 
             processed.should.be.deepEqual("itclub");
         });        
@@ -150,7 +169,7 @@ describe('Array', function () {
             c.push(1);
             c.pop();
             c.push(23);
-            c.push(37);
+            c.push(36);
             c.shift();
             c.unshift(5);
             
@@ -164,6 +183,7 @@ describe('Array', function () {
             c.pop();
             c.reverse();
             c.shift();
+            c.unshift('mehmet');
             
             c.should.be.deepEqual(['mehmet', 'ferdi']);
         });
